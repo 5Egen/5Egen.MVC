@@ -3,6 +3,43 @@
     padding-bottom: 40px;
 }
 
+.alignment-btn-group button {
+    width: 50px;
+    /*margin-right: -5px;
+    margin-bottom: -1px;
+        */
+    margin-bottom: 4px;
+    /*border-radius: 0px;*/
+}
+
+.alignment-btn-misc button {
+    margin-bottom: 4px;
+    width: 158px;
+}
+/*
+.alignment-btn-row {
+    margin: 0px;
+}
+
+
+.alignment-btn-row:first-child  button:first-child {
+    border-top-left-radius: 4px;
+}
+
+.alignment-btn-row:last-child  button:first-child {
+    border-bottom-left-radius: 4px;
+}
+
+.alignment-btn-row:first-child  button:last-child {
+    border-top-right-radius: 4px;
+}
+
+.alignment-btn-row:last-child  button:last-child {
+    border-bottom-right-radius: 4px;
+}
+
+    */
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {

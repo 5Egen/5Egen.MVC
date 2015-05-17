@@ -14,15 +14,59 @@
             <p>@al.AlignmentDescription</p>
         </div>
     }
+
+    <br />
+
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="alignment-btn-group">
+                <div class="alignment-btn-row">
+                    <button class="btn btn-default">LG</button>
+                    <button class="btn btn-default">NG</button>
+                    <button class="btn btn-default">CG</button>
+                </div>
+                <div class="alignment-btn-row">
+                    <button class="btn btn-default">LN</button>
+                    <button class="btn btn-default">N</button>
+                    <button class="btn btn-default">CN</button>
+                </div>
+                <div class="alignment-btn-row">
+                    <button class="btn btn-default">LE</button>
+                    <button class="btn btn-default">NE</button>
+                    <button class="btn btn-default">CE</button>
+                </div>
+            </div>
+            <div class="alignment-btn-misc">
+                <button class="btn btn-default">No Alignment</button>
+            </div>
+            <div class="alignment-btn-misc">
+                <button class="btn btn-default">Custom Alignment</button>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <h4>Alignment Description:</h4>
+            <div class="align-description well"></div>
+        </div>
+    </div>
     
 </div>
 
 @section scripts {
 <script>
     $(document).ready(function () {
+        // dynamically show selected alignment's description (dropdown list)
         var prevID = "";
         $("#ddlAlignment").change(function () {
             var selectedID = $('#ddlAlignment').val();
+            $("#" + selectedID).removeClass("hidden");
+            $("#" + prevID).addClass("hidden");
+            prevID = selectedID;
+        });
+
+        // dynamically show selected alignment's description (button grid)
+        var prevID = "";
+        $(".alignment-btn-group button").click(function () {
+            var selectedID = $(this).id();
             $("#" + selectedID).removeClass("hidden");
             $("#" + prevID).addClass("hidden");
             prevID = selectedID;
