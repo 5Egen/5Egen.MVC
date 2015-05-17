@@ -9,7 +9,7 @@ namespace CharacterTestMvc.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "CharacterTestMvc.Models.CharacterDb";
         }
 
