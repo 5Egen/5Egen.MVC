@@ -11,6 +11,7 @@ namespace CharacterTestMvc.Controllers
     public class HomeController : Controller
     {
         CharacterDb cdb = new CharacterDb();
+        static CreateViewModel cvm = new CreateViewModel();
 
         public ActionResult Index()
         {
@@ -26,6 +27,18 @@ namespace CharacterTestMvc.Controllers
             ViewBag.ListOfAlignments = alignments;
 
             return View(model);
+        }
+
+        [HttpGet]
+        public String getAlignmentDescription(String alID)
+        {
+            foreach (Alignment a in cvm.AllAlignments)
+            {
+                if (a.AlignmentId == Convert.ToInt32(alID.Substring(2)))
+                    return a.AlignmentDescription;
+            }
+
+            return "Please select an alignment.";
         }
 
         public ActionResult About()
@@ -44,22 +57,13 @@ namespace CharacterTestMvc.Controllers
 
         public ActionResult Create()
         {
-            CreateViewModel allInfo = new CreateViewModel();
-            allInfo.AllAlignments = cdb.Alignments.ToList();
-            allInfo.AllClasses = cdb.Classes.ToList();
-            allInfo.AllRaces = cdb.Races.ToList();
-            allInfo.AllTraits = cdb.Traits.ToList();
-            allInfo.AllLanguages = cdb.Languages.ToList();
+            cvm.AllAlignments = cdb.Alignments.ToList();
+            cvm.AllClasses = cdb.Classes.ToList();
+            cvm.AllRaces = cdb.Races.ToList();
+            cvm.AllTraits = cdb.Traits.ToList();
+            cvm.AllLanguages = cdb.Languages.ToList();
 
-            //-------------------------------------------------------
-
-            List<Alignment> al = cdb.Alignments.ToList<Alignment>();
-
-            SelectList sl = new SelectList(al);
-            
-            ViewBag.AlList = sl;
-
-            return View(allInfo);
+            return View(cvm);
         }
 
         protected override void Dispose(bool disposing)

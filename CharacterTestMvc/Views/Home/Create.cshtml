@@ -6,27 +6,26 @@
 <div>
     <h1>Create Character</h1>
 
-    @Html.DropDownList("Alignments", Model.getAlignmentNames(), new { @class = "form-control", @id="ddlAlignment"})
+    @Html.DropDownList("Alignments", Model.getAlignmentNames(), new { @class = "form-control", @id="ddlAlignment", @onchange="AJAX_getAlignmentDescription()"})
 
-    @foreach (var al in Model.AllAlignments)
-    {
-        <div id = @String.Concat("AL", al.AlignmentId) class="well hidden">
-            <p>@al.AlignmentDescription</p>
-        </div>
-    }
-    
+    <div id="AlignmentDescription"></div>
 </div>
 
 @section scripts {
-<script>
-    $(document).ready(function () {
-        var prevID = "";
-        $("#ddlAlignment").change(function () {
-            var selectedID = $('#ddlAlignment').val();
-            $("#" + selectedID).removeClass("hidden");
-            $("#" + prevID).addClass("hidden");
-            prevID = selectedID;
-        });
-    });
-</script>
+    <script>
+    function AJAX_getAlignmentDescription()
+    {
+        //alert("In AJAX_getAlignmentDescription()")
+        var xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.onreadystatechange = function()
+        {
+            if (xmlhttp.readyState = 4 && xmlhttp.status == 200)
+                document.getElementById("AlignmentDescription").innerHTML = xmlhttp.responseText;
+        }
+
+        xmlhttp.open("GET", "@Url.Action("getAlignmentDescription", "Home")" + "?alID=" + $('#ddlAlignment').val(), true);
+        xmlhttp.send();
+    }
+    </script>
 }
