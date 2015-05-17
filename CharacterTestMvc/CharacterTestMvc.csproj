@@ -141,6 +141,10 @@
     <Compile Include="Migrations\201505162331132_InitialCreate.Designer.cs">
       <DependentUpon>201505162331132_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505170524585_AddClassDescription.cs" />
+    <Compile Include="Migrations\201505170524585_AddClassDescription.Designer.cs">
+      <DependentUpon>201505170524585_AddClassDescription.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Alignment.cs" />
     <Compile Include="Models\Character.cs" />
@@ -210,6 +214,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201505162331132_InitialCreate.resx">
       <DependentUpon>201505162331132_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505170524585_AddClassDescription.resx">
+      <DependentUpon>201505170524585_AddClassDescription.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
