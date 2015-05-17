@@ -17,6 +17,11 @@
     width: 158px;
 }
 
+.alignment-selected {
+    background-color: #E0e0e0;
+    border-color: #AAA;
+}
+
 /*
 .alignment-btn-row {
     margin: 0px;
